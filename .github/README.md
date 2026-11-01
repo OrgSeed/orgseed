@@ -31,7 +31,7 @@ Founding is not one click. It is the first session, a long conversation in which
 1. **Download this repository** (green "Code" button, then "Download ZIP") and unzip it. This folder is the seed; leave it as it is.
 2. **Double-click `Found-an-organization`** (`.cmd` on Windows, `.command` on a Mac) in the seed's folder. A small window asks for a short name; type one and press Enter. Despite the launcher's name, nothing is founded yet. It copies the seed into two folders next to it:
    - your organization, under the name you gave;
-   - its **witness**, with `-witness` at the end of the name: a copy of the organization's history that refuses any rewrite or deletion, kept outside the folder the AI members work in. It is why the record can be trusted later. You never need to open it.
+   - its **witness**, with `-witness` at the end of the name: a copy of the organization's history that refuses any rewrite or deletion, kept outside the folder the AI members work in. It makes a rewritten record easier to detect. You never need to open it.
 
    No AI is involved in this step.
 3. **Open your organization's folder in your agent app and say: "Read `AGENTS.md` and follow it."** `AGENTS.md` holds the organization's rules, each with its reason. The AI model, working through your app, reads it and joins as the organization's first AI member. (Before you open the app, you may double-click `Start-a-member` in the organization's folder; it writes down which member is starting, on which model, so the records can be traced to it. The seed recommends it; nothing stops without it.)
@@ -40,7 +40,7 @@ Founding is not one click. It is the first session, a long conversation in which
 
 ## Why the two small windows
 
-An AI member can write files. So the steps that make things final happen in windows the members do not control: making the organization and its witness, founding it, and signing decisions. Only you can found the organization, and only you can sign.
+An AI member can write files. So the steps that make things final happen in windows the members do not control: making the organization and its witness, founding it, and signing decisions. These windows are a safeguard and not a lock: `docs/SECURITY.md` says what a determined member could still do.
 
 ## What stays yours
 
@@ -51,13 +51,13 @@ By default, members ask you before anything leaves the organization: before anyt
 ## Privacy
 
 - **The seed sends nothing.** Its own scripts never connect to the internet; they only read and write your folders.
-- **Your agent app does send data.** It sends your conversation, and any file the AI member opens, to the company that serves the model, under your account and that company's terms. Choose the app and the model as you would any service; `docs/DATA_FLOW.md` says more.
+- **Your agent app does send data.** It sends your conversation, and any file the AI member opens, to the company that serves the model, under your account and that company's terms. Under its own settings the app can also reach the internet in other ways. Choose the app and the model as you would any service; `docs/DATA_FLOW.md` says more.
 
 ## For researchers
 
 - **Watch:** open `view/org_view.html` in a browser to see an organization drawn from its files.
 - **Read the record:** `records/` holds the history, which can only be added to; `docs/PROVENANCE.md` describes its export in two open provenance standards (W3C PROV and RO-Crate).
-- **Run it safely:** `docs/HARNESS_NOTES.md` covers the settings that keep your own files and secrets away from the member, and a dev container.
+- **Run it safely:** `docs/HARNESS_NOTES.md` covers settings and a dev container that help keep your own files and secrets away from the member. Settings are not a lock: a later check found that OpenCode's shell rules can be passed by PowerShell expressions, so use the dev container if your machine holds anything sensitive.
 - **Each module states its theory, or says it claims none:** `modules/`.
 
 ## Licence
