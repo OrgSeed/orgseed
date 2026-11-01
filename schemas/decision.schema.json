@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "seed/decision.schema.json",
+  "title": "Decision (one line of records/decisions.jsonl)",
+  "description": "A decision as the member recorded it: the question as it was put, naming the proposals by ID, and the decider's reply in their own words. A decision is final only when the founder signs it at close-out (records/signatures.jsonl, written by scripts/fos_close.py). Until then it is provisional; if it is not signed it stays a proposal.",
+  "allOf": [
+    {"$ref": "common.schema.json#/$defs/record"},
+    {
+      "type": "object",
+      "required": ["id", "question", "proposal_ids", "framed_by", "decided_by", "decider_kind", "right", "verdict", "words"],
+      "properties": {
+        "id": {"type": "string", "description": "D-0001, D-0002 ..."},
+        "proposal_ids": {"type": "array", "items": {"type": "string"}, "description": "The proposals decided. Empty for a decision that changes no structure (for example, a choice between two framings)."},
+        "question": {"type": "string", "description": "The question exactly as it was put, naming each proposal by ID: 'Do you adopt P-0004 (switch on the claim-discipline module)?'"},
+        "framed_by": {"type": "string", "description": "Who framed the question and its options."},
+        "decided_by": {"type": "string", "description": "Role instance ID of the decider."},
+        "decider_kind": {"type": "string", "enum": ["human", "ai"]},
+        "right": {"type": "string", "description": "The decision right used, as named in org/config.json decision_rights."},
+        "verdict": {"type": "string", "enum": ["adopted", "amended", "declined", "deferred"]},
+        "words": {"type": "string", "description": "The decider's reply, quoted exactly. Not a paraphrase, not a summary."},
+        "amendment": {"type": "string", "description": "If verdict is amended: the change as amended."},
+        "founding": {"type": "boolean", "description": "true on the decision the member puts to the founder as the founding (onboarding/START.md, step 8). It only tells the close-out which decision to show at its founding prompt: the label founds nothing. The organization is founded when the founder types FOUND at that prompt, and the close-out commits that signature on its own before any structure; the check and the witness read the founding from the history alone."},
+        "corrects": {"type": "string", "description": "Optional. ID of an earlier decision record this one replaces because it was recorded wrongly. A change of mind is a new decision, not a correction. Whether the organization is founded never depends on it: only the founder's FOUND at a close-out founds it."}
+      }
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "seed/common.schema.json",
+  "title": "Fields every record carries (every line of every file in records/)",
+  "description": "Every record is one JSON object on one line. These fields are shared by all record kinds; each kind's own schema adds its fields with allOf. Records are appended only through scripts/fos_log.py; a records file is never edited, rewritten or deleted, and never opened with an agent app's file tools (AGENTS.md, CORE-4).",
+  "$defs": {
+    "identity": {
+      "description": "Who wrote the record, per instance. Definitions (AGENTS.md, CORE-6): the producer makes the model; the agent app is the program the member runs in; the host serves the model to that app. Write unknown rather than guess.",
+      "type": "object",
+      "required": ["instance", "kind"],
+      "properties": {
+        "instance": {"type": "string", "description": "Role instance ID from org/config.json (founder, member-1, ...), or the name of a seed script."},
+        "kind": {"type": "string", "enum": ["human", "ai", "script"]},
+        "model_id": {"type": ["string", "null"], "description": "Exactly as the agent app or host reports it, or unknown. Never guessed."},
+        "producer": {"type": ["string", "null"], "description": "Who made the model."},
+        "agent_app": {"type": ["string", "null"], "description": "The program the member runs in."},
+        "host": {"type": ["string", "null"], "description": "Who serves the model to the agent app: the producer itself, a cloud provider, or the founder's own machine."},
+        "model_id_source": {"type": ["string", "null"], "enum": ["agent_app", "host", "founder", "self_report", "runner", "unknown", null], "description": "Where the model ID came from. founder: the founder said which model they chose (in a launch, or when asked because the app did not report it)."},
+        "source": {"type": "string", "enum": ["stated", "config_slot", "launch", "terminal"], "description": "stated: written by the member for this record. config_slot: filled by fos_log from the instance's model slot in org/config.json. launch: filled from the founder's launch of this agent app (scripts/fos_launch.py). terminal: a person's record, written from that person's own terminal."},
+        "launch": {"type": "object", "description": "Present when the writer was started under a launch (FOS_LAUNCH). id: the launch, L-0001 ... mac: HMAC-SHA256 of this record's canonical JSON keyed by that launch's secret, kept in the witness folder; the check recomputes it, so a record cannot claim a launch it was not written under.", "required": ["id"], "properties": {"id": {"type": "string"}, "mac": {"type": "string"}}},
+        "agent_app_version": {"type": ["string", "null"], "description": "Optional. The agent app's version, as the app or the founder reports it."},
+        "model_snapshot": {"type": ["string", "null"], "description": "Optional. Where a host separates a model name from a dated snapshot, the snapshot."},
+        "decoding": {"type": "object", "description": "Optional. Sampling settings, where known: temperature, top_p, seed, max_output."},
+        "runtime": {"type": "object", "description": "Optional, for models run on the founder's own machine: engine, version, precision, device."}
+      }
+    },
+    "record": {
+      "type": "object",
+      "required": ["seq", "ts", "session", "identity", "captured_by"],
+      "properties": {
+        "seq": {"type": "integer", "description": "This record's own number within its file: 1, 2, 3 ... Assigned by fos_log as one more than the highest seq in the file. Never reused. Corrections point to it."},
+        "ts": {"type": "string", "description": "Time in ISO 8601, in UTC, e.g. 2026-01-31T14:05:00+00:00. fos_log fills it."},
+        "session": {"type": "string", "description": "Session label, S001, S002 ... fos_log uses the latest session_start when none is given."},
+        "identity": {"$ref": "#/$defs/identity"},
+        "captured_by": {
+          "type": "string",
+          "enum": ["member", "founder", "runner", "observer", "host", "script", "close_script", "init_script", "drill_script", "sync_script", "launch_script"],
+          "description": "Who wrote this line. member and founder: participants' own account. runner, observer, host: a program or operator outside the organization. script, close_script, init_script, drill_script, sync_script, launch_script: the seed's own scripts; members never write these values."
+        },
+        "refs": {"type": "array", "items": {"type": "string"}, "description": "IDs this record concerns: P-0003, D-0002, DR-0001, a file path, or an earlier record as records/<file>#<seq>."},
+        "drill": {"type": "boolean", "description": "True when the record is part of a drill planted by the founder. Such a record names the drill (DR-...) in refs."},
+        "origin": {"type": "string", "enum": ["arose", "planned"], "description": "Optional. planned: scheduled in advance to exercise a feature. arose: happened in the course of work."}
+      }
+    }
+  }
+}

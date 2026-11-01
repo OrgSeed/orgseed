@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "seed/event.schema.json",
+  "title": "Event (one line of records/events.jsonl)",
+  "description": "What happens, in order. Append-only: never edit or delete a line or the file. A recording error is corrected by a record_correction event that points to the record by seq (or, for a line that is not valid JSON, by line number). The common fields (seq, ts, session, identity, captured_by, refs, drill, origin) are in common.schema.json.",
+  "allOf": [
+    {"$ref": "common.schema.json#/$defs/record"},
+    {
+      "type": "object",
+      "required": ["type", "summary"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "session_start", "session_end",
+            "proposal", "decision", "structure_change",
+            "work_done", "decline", "redirect", "handback", "retro", "note",
+            "correction", "record_correction",
+            "claim_recorded", "source_fetched", "check_run", "review",
+            "role_ran", "recall_check",
+            "member_joined", "member_left", "model_swap",
+            "dissent", "commitment",
+            "need_noticed", "tool_proposed", "tool_approved", "tool_built", "tool_tested",
+            "tool_registered", "tool_run", "tool_reviewed", "tool_paused", "tool_retired",
+            "capability_declared",
+            "born", "witness_created", "close_out", "integrity_repair", "unrecorded_session", "sync", "instance_launched", "study_configured", "operator_access"
+          ],
+          "description": "born, witness_created, close_out, integrity_repair, unrecorded_session, sync, instance_launched and study_configured are written only by the seed's scripts. study_configured: at birth, fos_init made this organization a research configuration (org/STUDY.json), for a study only. instance_launched: the founder's launch of an agent app as a role instance (scripts/fos_launch.py), with what the founder said it runs on (launch_id, launched_instance, launched). sync: fos_sync brought the folder back in line with its witness; it names what it kept and what it set aside in the witness folder. unrecorded_session: the close-out found no session_start since the last close-out, and records the gap (and, if nothing changed at all, the founder's answer to whether a session took place). role_ran: a role was called by its trigger; refs hold the role ID. source_fetched: a member fetched a web page, which the founder allowed in the agent app, and saved it in sources/ (url, saved_as; saved_sha256 is filled in). Every fetch is logged; what a member remembers is never a source. record_correction: points to a record that was written wrongly (corrects). operator_access: a host operator opened the organization; written by the host."
+        },
+        "summary": {"type": "string", "description": "One plain sentence."},
+        "corrects": {
+          "type": "object",
+          "description": "record_correction only. The record being corrected: its file, and its seq, or the line number when the line is not valid JSON.",
+          "required": ["file"],
+          "properties": {
+            "file": {"type": "string"},
+            "seq": {"type": "integer"},
+            "line": {"type": "integer"}
+          }
+        },
+        "url": {"type": "string", "description": "source_fetched only. The address fetched."},
+        "saved_as": {"type": "string", "description": "source_fetched only. Where the fetched page was saved, under sources/."},
+        "saved_sha256": {"type": "string", "description": "source_fetched only. The SHA-256 of the saved file when the fetch was logged; filled in by fos_log."},
+        "should_read": {"type": "string", "description": "record_correction only. What the corrected record should have said, in words or as JSON text. It is for readers; it does not replace the original."},
+        "app_instructions": {
+          "type": "array",
+          "description": "instance_launched only, when the founder named them (fos_launch --app-instructions). The agent app's own instruction and configuration files for this launch: each file's name and SHA-256, or a folder's name (ending in /), its number of files and one SHA-256 over their relative paths and hashes. Never their content or full paths.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "sha256": {"type": "string"},
+              "files": {"type": "integer"}
+            }
+          }
+        },
+        "seed": {
+          "type": "object",
+          "description": "born only. The seed release this organization was born from, and the birth hash: the git tree id of the organization's first commit, which equals the seed's tree at that release.",
+          "properties": {
+            "name": {"type": "string"},
+            "version": {"type": "string"},
+            "source_commit": {"type": ["string", "null"]},
+            "tree": {"type": "string"}
+          }
+        }
+      }
+    }
+  ]
+}

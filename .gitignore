@@ -1,0 +1,46 @@
+# Secrets never belong in this folder (AGENTS.md, CORE-8).
+.env
+.env.*
+*.key
+*.pem
+secrets/
+
+# Python caches. The scripts need none; caches can hold machine paths.
+__pycache__/
+*.pyc
+
+# Agent-app state, chat histories and transcripts. They stay out of the
+# organization's history: the organization remembers through records/,
+# and transcripts belong outside the folder, with the founder.
+.claude/
+.codex/
+.opencode/
+.goose/
+.cursor/
+.gemini/
+.windsurf/
+.continue/
+.roo/
+.cline/
+.openhands/
+.aider*
+.vscode/
+.idea/
+.zed/
+
+# Machine-local settings written by the seed's scripts (never organization content).
+.local.json
+# The lock fos_log holds while it appends.
+.fos-lock
+# A launch written with fos_launch --file: it holds a secret, and is never committed.
+.fos_launch.json
+
+# Exports are made outside the folder; ignore any that land inside it.
+*.bundle
+
+# Operating-system and sync-client debris.
+desktop.ini
+Thumbs.db
+.DS_Store
+*.tmp
+~$*

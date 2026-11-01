@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "seed/proposal.schema.json",
+  "title": "Proposal (one line of records/proposals.jsonl)",
+  "description": "A proposed change to the organization. A proposal has no status field: its status is derived from decisions and signatures. With no signed decision it stays a proposal, and it is kept and committed like any other record.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/record"
+    },
+    {
+      "type": "object",
+      "required": [
+        "id",
+        "proposed_by",
+        "kind",
+        "target",
+        "change",
+        "why"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "P-0001, P-0002 ..."
+        },
+        "proposed_by": {
+          "type": "string",
+          "description": "Role instance ID, or founder."
+        },
+        "kind": {
+          "type": "string",
+          "description": "What the proposal changes, as a label. The check judges a decision by what it changes in the organization's files, whatever this says: a proposal of kind other whose decision switches a module on adopts structure.",
+          "enum": [
+            "module",
+            "role",
+            "role_instance",
+            "model_slot",
+            "rule",
+            "check",
+            "tool",
+            "charter",
+            "decision_right",
+            "records_policy",
+            "view",
+            "other"
+          ]
+        },
+        "target": {
+          "type": "string",
+          "description": "What it changes: a module ID, a role ID, a rule ID, a tool ID, or a file path."
+        },
+        "change": {
+          "type": "string",
+          "description": "The change, stated so that someone else could carry it out."
+        },
+        "why": {
+          "type": "string",
+          "description": "The reason, in one or two sentences."
+        },
+        "drawn_from": {
+          "type": "string",
+          "description": "Optional. Where the idea came from, e.g. the founder's answer to an interview question."
+        },
+        "supersedes": {
+          "type": "string",
+          "description": "Optional. ID of an earlier proposal this one replaces."
+        },
+        "background": {
+          "type": "string",
+          "description": "Optional. What the founder needs to know to decide this, in plain words: the terms used, what the options mean, what is uncertain. Shown at the close-out with the decision."
+        },
+        "if_undecided": {
+          "type": "string",
+          "description": "Optional. What happens if nobody decides (the default)."
+        },
+        "cost_of_waiting": {
+          "type": "string",
+          "description": "Optional. What waiting costs, if anything."
+        },
+        "problem": {
+          "type": "string",
+          "description": "Optional; asked of a proposal that changes structure (CORE-2). What fails or is missing today; point to a record if there is one."
+        },
+        "expected_effect": {
+          "type": "string",
+          "description": "Optional; asked of a proposal that changes structure. What ought to look different afterwards, put so that the records could show it."
+        },
+        "grounding": {
+          "type": [
+            "object",
+            "string"
+          ],
+          "description": "Optional; asked of a proposal that changes structure. Its basis: a source, as an object (source: author, year and title; pages; status: read or lead; source_file: the saved copy under sources/, for a work marked read), or the words \"our reasoning\". Give a source only where there is one, and never make one up (CORE-13); the check warns when a work marked read has no saved copy.",
+          "properties": {
+            "source": {
+              "type": "string"
+            },
+            "pages": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "read",
+                "lead"
+              ]
+            },
+            "source_file": {
+              "type": "string"
+            }
+          }
+        },
+        "for_the_founder": {
+          "type": "string",
+          "description": "Optional; asked of a proposal that changes structure. One paragraph in everyday words for the founder: what changes for them, and at what cost. The check warns when a decision adopts structure from a proposal without it."
+        },
+        "undo": {
+          "type": "string",
+          "description": "Optional; asked of a proposal that changes structure. How to go back on the change; the records from the time it was in force are kept. The check warns when a decision adopts structure from a proposal without it."
+        }
+      }
+    }
+  ]
+}

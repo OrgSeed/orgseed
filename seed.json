@@ -1,0 +1,6 @@
+{
+  "name": "OrgSeed",
+  "version": "1.3.2-draft",
+  "format_version": "1",
+  "about": "The seed's name and release, in one place. Organizations born from the seed record them in their birth record. scripts/rename.py changes the name everywhere it appears."
+}

@@ -1,0 +1,19 @@
+{
+  "about": "The organization's view: which panels appear, in what order, under what titles. This file is structure: a change to it is a proposal (kind view) and a decision the founder signs. The frame around the panels is drawn by scripts/fos_render.py whatever this file says: whose organization it is and what it was born from, whether it is witnessed, what waits for the founder, anything not part of the organization, the members and their models, and what was turned back. Panels draw only from the sources the renderer knows; the renderer writes plain HTML with no scripts and no network access.",
+  "format_version": "1",
+  "adopted_by": "seed",
+  "sources_available": ["goal", "queue", "decisions", "signatures", "modules", "members", "roles", "rules", "declines", "claims", "tools", "needs", "drills", "recall", "memory", "since"],
+  "panels": [
+    {"id": "goal", "title": "Goal and movement", "source": "goal"},
+    {"id": "queue", "title": "Waiting for a decision", "source": "queue"},
+    {"id": "decisions", "title": "Recent decisions, and whether the founder signed them", "source": "decisions", "limit": 12},
+    {"id": "modules", "title": "Structure: modules", "source": "modules"},
+    {"id": "roles", "title": "Roles, their triggers and when they last ran", "source": "roles"},
+    {"id": "rules", "title": "Rules in force, with their reasons", "source": "rules"},
+    {"id": "claims", "title": "Claims and their sources", "source": "claims", "limit": 12},
+    {"id": "tools", "title": "Tools", "source": "tools"},
+    {"id": "drills", "title": "Drills", "source": "drills"},
+    {"id": "memory", "title": "Memory", "source": "memory"},
+    {"id": "since", "title": "Since the last close-out", "source": "since", "limit": 40}
+  ]
+}

@@ -1,0 +1,1274 @@
+{
+ "checks": [
+  {
+   "check": "the member prepares the charter: before the close-out the organization is born, not founded, and the check notes the structure prepared for the founding without failing it",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out asks the founding first, on its own, showing the structure prepared for it, and the founder types FOUND",
+   "result": "pass"
+  },
+  {
+   "check": "the founding is committed on its own, records only, and the structure in the commit after it",
+   "result": "pass"
+  },
+  {
+   "check": "its signature records the word the founder typed, and the close-out writes the founding into config.json",
+   "result": "pass"
+  },
+  {
+   "check": "the witness accepts both commits, and the check reads the founding from the history",
+   "result": "pass"
+  },
+  {
+   "check": "a founding signed in test mode founds nothing outside the self-test: there, the structure after it fails",
+   "result": "pass"
+  },
+  {
+   "check": "START, SESSION_START, CLOSE_OUT and CORE-2 say it: the member prepares the charter, and the founder founds the organization at the close-out by typing FOUND",
+   "result": "pass"
+  },
+  {
+   "check": "a plan answering y at the founding prompt does not found the organization: the founding is not signed, and the structure prepared for it stays in the folder, uncommitted",
+   "result": "pass"
+  },
+  {
+   "check": "the held files are not taken for a member's unrecorded work",
+   "result": "pass"
+  },
+  {
+   "check": "the prepared structure: committed by hand, the witness refuses it and the check fails it (STRUCTURE BEFORE FOUNDING)",
+   "result": "pass"
+  },
+  {
+   "check": "a sync returns the folder to the witness and keeps the prepared structure in it, uncommitted",
+   "result": "pass"
+  },
+  {
+   "check": "a founding that is deferred is not offered for founding; the adoption after it is not asked, and its module stays uncommitted",
+   "result": "pass"
+  },
+  {
+   "check": "a founding that is declined is not offered for founding; the adoption after it is not asked, and its module stays uncommitted",
+   "result": "pass"
+  },
+  {
+   "check": "records and config.json that call the organization founded do not found it: the check says it is not, and names the early adoption as a warning",
+   "result": "pass"
+  },
+  {
+   "check": "a close-out answered y to every prompt founds nothing and commits no structure: the module adopted before the founding is not asked",
+   "result": "pass"
+  },
+  {
+   "check": "a founding that corrects a deferred one: committed by hand, the witness refuses it and the check fails it (STRUCTURE BEFORE FOUNDING)",
+   "result": "pass"
+  },
+  {
+   "check": "the founder answers n at the founding prompt: the founding is not signed, and the adoption after it waits",
+   "result": "pass"
+  },
+  {
+   "check": "recorded again with corrects, the refused founding still founds nothing",
+   "result": "pass"
+  },
+  {
+   "check": "a founding that corrects one the founder did not sign: committed by hand, the witness refuses it and the check fails it (STRUCTURE BEFORE FOUNDING)",
+   "result": "pass"
+  },
+  {
+   "check": "decisions of kind 'other' that switch a module on and add a rule before the founding are named, as warnings only",
+   "result": "pass"
+  },
+  {
+   "check": "re-pointed to the founding decision, the module and the rule are still not committed: a close-out answered y throughout founds nothing",
+   "result": "pass"
+  },
+  {
+   "check": "a kind-'other' module and rule, re-pointed to the founding decision: committed by hand, the witness refuses it and the check fails it (STRUCTURE BEFORE FOUNDING)",
+   "result": "pass"
+  },
+  {
+   "check": "a founding stand-in that changes nothing, then a module: the close-out still asks for FOUND, and a y founds nothing and commits no module",
+   "result": "pass"
+  },
+  {
+   "check": "seed-labelled items edited in place, with no decision at all (a role's purpose, a second role, settings, the founder's reserved rights, the view's panels): the close-out commits none of it",
+   "result": "pass"
+  },
+  {
+   "check": "seed-labelled items edited in place: committed by hand, the witness refuses it and the check fails it (STRUCTURE BEFORE FOUNDING)",
+   "result": "pass"
+  },
+  {
+   "check": "an adoption recorded before the founding decision, once the founder has founded the organization and signed it, is a warning only: the check passes",
+   "result": "pass"
+  },
+  {
+   "check": "a key written twice in config.json (the first copy switches a module on, the last is the birth's) fails the check in plain words, and counts as structure changed from birth",
+   "result": "pass"
+  },
+  {
+   "check": "a key written twice in config.json: committed by hand, the witness refuses it and the check fails it (STRUCTURE BEFORE FOUNDING)",
+   "result": "pass"
+  },
+  {
+   "check": "a member's script that imports the close-out and calls its signing function, or writes a signature through the records writer, is refused: nothing is signed",
+   "result": "pass"
+  },
+  {
+   "check": "a test-mode founding, pushed with SEED_SELFTEST=1 in the pusher's environment to a witness set up without it, is refused: the witness reads test mode from its own setting",
+   "result": "pass"
+  },
+  {
+   "check": "at the founding prompt the founder sees every change from birth, in words: a trimmed reserved right (which this close-out cannot put back, and the screen says so), an added role instance (offered to put back), the module the founding adopts, and the charter's lines; the signature keeps what was shown",
+   "result": "pass"
+  },
+  {
+   "check": "fos_init creates the organization",
+   "result": "pass"
+  },
+  {
+   "check": "birth hash: the first commit's tree equals the seed's tree",
+   "result": "pass"
+  },
+  {
+   "check": "the birth record names that tree",
+   "result": "pass"
+  },
+  {
+   "check": "org/BIRTH.json holds the same birth",
+   "result": "pass"
+  },
+  {
+   "check": "the seed itself is still the seed (no birth in its history)",
+   "result": "pass"
+  },
+  {
+   "check": "the seed's check names its commit and the tree an organization born from it gets as its birth hash, the one fos_init prints",
+   "result": "pass"
+  },
+  {
+   "check": "the witness exists outside the folder",
+   "result": "pass"
+  },
+  {
+   "check": "fos_check passes on a new organization",
+   "result": "pass"
+  },
+  {
+   "check": "where git cannot start (some sandboxes), the witness is still found and not called missing",
+   "result": "pass"
+  },
+  {
+   "check": "a birth that fails part-way leaves no organization and no witness behind",
+   "result": "pass"
+  },
+  {
+   "check": "a folder whose paths would be too long is refused before anything is created",
+   "result": "pass"
+  },
+  {
+   "check": "before any session, the check sends a new member to the first session",
+   "result": "pass"
+  },
+  {
+   "check": "a first session that stopped before the founding is closed out, and the organization is not founded",
+   "result": "pass"
+  },
+  {
+   "check": "the next member is sent to session start, not to the first session again, and told the founding is unfinished",
+   "result": "pass"
+  },
+  {
+   "check": "fos_check --resume prints the letter, the state and each signed decision with the founder's words",
+   "result": "pass"
+  },
+  {
+   "check": "AGENTS.md sends a member by the sessions on record, whatever 'founded' says",
+   "result": "pass"
+  },
+  {
+   "check": "SESSION_START's first step reads the letter, the state and the signed decisions, and does not restart the first session in an organization not yet founded",
+   "result": "pass"
+  },
+  {
+   "check": "step 5 tells the member to look back over the founder's words before each question, and not to ask again what was already said",
+   "result": "pass"
+  },
+  {
+   "check": "GOAL.md's reason field is filled from wherever the founder gave the reason, in their words",
+   "result": "pass"
+  },
+  {
+   "check": "CLAUDE.md holds only the import line @AGENTS.md, outside backticks, so Claude Code loads the boot file",
+   "result": "pass"
+  },
+  {
+   "check": "GEMINI.md holds only Gemini CLI's import line for the same folder, @./AGENTS.md",
+   "result": "pass"
+  },
+  {
+   "check": "the other pointer files name AGENTS.md in words, with no import line an app could misread",
+   "result": "pass"
+  },
+  {
+   "check": "a pointer file changed after birth is reported, like the seed's other files",
+   "result": "pass"
+  },
+  {
+   "check": "from a downloaded copy in a plain download folder, fos_init still makes the git repository and the witness",
+   "result": "pass"
+  },
+  {
+   "check": "its birth hash is the seed's own tree, computed from the files; [SEED] and [BIRTH] are in the witness (a plain download folder)",
+   "result": "pass"
+  },
+  {
+   "check": "and the check passes in it (a plain download folder)",
+   "result": "pass"
+  },
+  {
+   "check": "the downloaded seed's check names the same tree, computed from its files (a plain download folder)",
+   "result": "pass"
+  },
+  {
+   "check": "from a downloaded copy in a folder inside another repository, fos_init still makes the git repository and the witness",
+   "result": "pass"
+  },
+  {
+   "check": "its birth hash is the seed's own tree, computed from the files; [SEED] and [BIRTH] are in the witness (a folder inside another repository)",
+   "result": "pass"
+  },
+  {
+   "check": "and the check passes in it (a folder inside another repository)",
+   "result": "pass"
+  },
+  {
+   "check": "the downloaded seed's check names the same tree, computed from its files (a folder inside another repository)",
+   "result": "pass"
+  },
+  {
+   "check": "--from, which needs the seed's history, is refused for a downloaded copy",
+   "result": "pass"
+  },
+  {
+   "check": "each founder step has a Windows (.cmd, CRLF) and a macOS (.command, executable) launcher that changes to its own folder, runs the script unchanged, and waits before closing",
+   "result": "pass"
+  },
+  {
+   "check": "the organization is born with the launchers, the macOS ones still executable, and the same birth hash",
+   "result": "pass"
+  },
+  {
+   "check": "the founding launcher, copied into every organization, will not found one from an organization",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out launcher keeps the close-out's own safeguard: run without a terminal, the script refuses",
+   "result": "pass"
+  },
+  {
+   "check": "so does the member launcher",
+   "result": "pass"
+  },
+  {
+   "check": "the founding launcher asks for a name and makes the organization and its witness next to the seed",
+   "result": "pass"
+  },
+  {
+   "check": "a launcher changed in an organization is reported, like the seed's other files",
+   "result": "pass"
+  },
+  {
+   "check": "nothing but the claim rule can be switched off (the record-keeping core never)",
+   "result": "pass"
+  },
+  {
+   "check": "fos_init --study makes a research configuration and says so",
+   "result": "pass"
+  },
+  {
+   "check": "its boot file has no claim rule, and its first session asks for no claims lines",
+   "result": "pass"
+  },
+  {
+   "check": "the first session's line about recall, part of the claim rule, goes with it",
+   "result": "pass"
+  },
+  {
+   "check": "it is still born from the seed (same birth hash), and the change is its own [STUDY] commit",
+   "result": "pass"
+  },
+  {
+   "check": "the check says it is a research configuration and runs no claim checks",
+   "result": "pass"
+  },
+  {
+   "check": "the view says so in its frame",
+   "result": "pass"
+  },
+  {
+   "check": "a STUDY.json copied into an ordinary organization switches nothing off",
+   "result": "pass"
+  },
+  {
+   "check": "a decline enforced by an add-on with no registry row is UNDECLARED ENFORCEMENT",
+   "result": "pass"
+  },
+  {
+   "check": "its row, once registered, declares it; a row that does not say what it covers or which code it is is flagged",
+   "result": "pass"
+  },
+  {
+   "check": "with what it covers and its code hash, the add-on is declared and nothing about it is flagged",
+   "result": "pass"
+  },
+  {
+   "check": "a row in testing declares the add-on, so the founder's own trial of it is on record",
+   "result": "pass"
+  },
+  {
+   "check": "a row that is only proposed does not",
+   "result": "pass"
+  },
+  {
+   "check": "a change to an add-on shipped with the seed is reported as a change to the seed's own files",
+   "result": "pass"
+  },
+  {
+   "check": "a proposal with the problem, the expected effect, its grounding, a paragraph for the founder and its undo is accepted",
+   "result": "pass"
+  },
+  {
+   "check": "a proposal without them is accepted too: they are asked for, not required",
+   "result": "pass"
+  },
+  {
+   "check": "a decision adopting structure from a proposal that does not say what it changes for the founder, or how it is undone, is flagged, and only for that proposal",
+   "result": "pass"
+  },
+  {
+   "check": "a proposal that rests on a work marked read with no saved copy is flagged (CORE-13)",
+   "result": "pass"
+  },
+  {
+   "check": "once its source is saved, it is not",
+   "result": "pass"
+  },
+  {
+   "check": "with decision-rights in force, the rules in force include DR-9: adopting on trial what the founder cannot judge",
+   "result": "pass"
+  },
+  {
+   "check": "only a decision's structural proposals are asked for the plain-language effect and the undo: a proposal of kind other beside one is not flagged",
+   "result": "pass"
+  },
+  {
+   "check": "a saved copy named by a path that leaves sources/ does not count as saved",
+   "result": "pass"
+  },
+  {
+   "check": "AGENTS.md, SESSION_START and CLOSE_OUT each say changes are welcome; CORE-2 asks for the proposal form; the core rules are still thirteen",
+   "result": "pass"
+  },
+  {
+   "check": "the launch records two items, each by name and SHA-256, and none of their content or full paths",
+   "result": "pass"
+  },
+  {
+   "check": "the check matches the launch against the witness's copy and verifies the member's record as before",
+   "result": "pass"
+  },
+  {
+   "check": "a path that is neither a file nor a folder records nothing",
+   "result": "pass"
+  },
+  {
+   "check": "session_start",
+   "result": "pass"
+  },
+  {
+   "check": "a whole record from a file (--json-file)",
+   "result": "pass"
+  },
+  {
+   "check": "a whole record from standard input (--json -)",
+   "result": "pass"
+  },
+  {
+   "check": "decision with the founder's words",
+   "result": "pass"
+  },
+  {
+   "check": "check flags a generic reply recorded as a decision",
+   "result": "pass"
+  },
+  {
+   "check": "check flags a question that does not name its proposal",
+   "result": "pass"
+  },
+  {
+   "check": "check reports decided structure as awaiting signature",
+   "result": "pass"
+  },
+  {
+   "check": "check flags citations in work/ with no claims line",
+   "result": "pass"
+  },
+  {
+   "check": "check flags a member writing into docs/",
+   "result": "pass"
+  },
+  {
+   "check": "no failure so far (warnings only)",
+   "result": "pass"
+  },
+  {
+   "check": "a JSON list of records goes in one call",
+   "result": "pass"
+  },
+  {
+   "check": "one record per line goes in one call",
+   "result": "pass"
+  },
+  {
+   "check": "batch mixes kinds, each naming its kind",
+   "result": "pass"
+  },
+  {
+   "check": "if one record in a call does not fit, none is written",
+   "result": "pass"
+  },
+  {
+   "check": "three writers side by side: every line kept, no seq used twice",
+   "result": "pass"
+  },
+  {
+   "check": "no lock is left behind",
+   "result": "pass"
+  },
+  {
+   "check": "refuses a signature from a member",
+   "result": "pass"
+  },
+  {
+   "check": "refuses a close_out event from a member",
+   "result": "pass"
+  },
+  {
+   "check": "refuses a reserved captured_by value",
+   "result": "pass"
+  },
+  {
+   "check": "refuses a record that does not fit its schema",
+   "result": "pass"
+  },
+  {
+   "check": "--check validates without writing",
+   "result": "pass"
+  },
+  {
+   "check": "refuses to run without a terminal",
+   "result": "pass"
+  },
+  {
+   "check": "--check-only runs anywhere and lists what waits",
+   "result": "pass"
+  },
+  {
+   "check": "test mode: founds the organization on D-0001, does not sign D-0002, commits and pushes",
+   "result": "pass"
+  },
+  {
+   "check": "the commit carries the organization's own author name, never a machine-wide git name or e-mail",
+   "result": "pass"
+  },
+  {
+   "check": "the founder is offered to put back structure with no signed decision (and here keeps it, as a proposal)",
+   "result": "pass"
+  },
+  {
+   "check": "before signing, the founder sees the check result and what changed on disk",
+   "result": "pass"
+  },
+  {
+   "check": "the founding is asked first, on its own, where the founder types FOUND; the decision with warnings after it, on its own",
+   "result": "pass"
+  },
+  {
+   "check": "the founding is its own commit, before the one with the structure",
+   "result": "pass"
+  },
+  {
+   "check": "two signature lines, written by the close-out",
+   "result": "pass"
+  },
+  {
+   "check": "each signature records what the founder was shown",
+   "result": "pass"
+  },
+  {
+   "check": "what was shown includes the SHA-256 of each changed file",
+   "result": "pass"
+  },
+  {
+   "check": "the witness holds the close-out commit",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out commit is dated in UTC",
+   "result": "pass"
+  },
+  {
+   "check": "signed structure is in force",
+   "result": "pass"
+  },
+  {
+   "check": "structure whose decision the founder refused fails",
+   "result": "pass"
+  },
+  {
+   "check": "a refused decision leaves its proposal open, and the next member is told so",
+   "result": "pass"
+  },
+  {
+   "check": "the view's queue shows it as open again",
+   "result": "pass"
+  },
+  {
+   "check": "outside the self-test, test signatures sign nothing, and a test founding founds nothing",
+   "result": "pass"
+  },
+  {
+   "check": "undoing the unsigned change clears the failure",
+   "result": "pass"
+  },
+  {
+   "check": "a malformed line fails the check",
+   "result": "pass"
+  },
+  {
+   "check": "fos_log still appends after a malformed line",
+   "result": "pass"
+  },
+  {
+   "check": "once corrected, it is a corrected defect, not a failure",
+   "result": "pass"
+  },
+  {
+   "check": "a clean close-out first, so every planted change starts from the witnessed state",
+   "result": "pass"
+  },
+  {
+   "check": "a records file deleted in a member's own commit",
+   "result": "pass"
+  },
+  {
+   "check": "the check sees the deletion in history",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out offers a sync, which returns the folder to the witnessed history and closes out",
+   "result": "pass"
+  },
+  {
+   "check": "the sync is on record",
+   "result": "pass"
+  },
+  {
+   "check": "after the sync the check passes",
+   "result": "pass"
+  },
+  {
+   "check": "an earlier line edited in a commit",
+   "result": "pass"
+  },
+  {
+   "check": "fos_sync undoes the refused commit, sets the edited line aside and keeps a copy of everything",
+   "result": "pass"
+  },
+  {
+   "check": "a rewritten history (force push)",
+   "result": "pass"
+  },
+  {
+   "check": "the check sees the local rewrite",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out will not commit over a rewritten history, and never advises reset --hard",
+   "result": "pass"
+  },
+  {
+   "check": "a second branch",
+   "result": "pass"
+  },
+  {
+   "check": "every refused push is logged in the witness folder, with its reasons and the hash of the check",
+   "result": "pass"
+  },
+  {
+   "check": "the check counts the refused pushes",
+   "result": "pass"
+  },
+  {
+   "check": "fos_sync returns a rewritten history to the witnessed one",
+   "result": "pass"
+  },
+  {
+   "check": "deleting its branch",
+   "result": "pass"
+  },
+  {
+   "check": "back to the witnessed history, the check passes",
+   "result": "pass"
+  },
+  {
+   "check": "copy A starts from a close-out",
+   "result": "pass"
+  },
+  {
+   "check": "a second copy is made from the witness",
+   "result": "pass"
+  },
+  {
+   "check": "the two copies number their records the same way (why copies are not supported)",
+   "result": "pass"
+  },
+  {
+   "check": "copy A closes out first",
+   "result": "pass"
+  },
+  {
+   "check": "copy B is told it is behind, not that its history was rewritten",
+   "result": "pass"
+  },
+  {
+   "check": "copy B's close-out offers the sync (never reset --hard); its colliding record is set aside, not merged",
+   "result": "pass"
+  },
+  {
+   "check": "copy B now holds copy A's session, and not its own colliding line",
+   "result": "pass"
+  },
+  {
+   "check": "copy B's line is kept in the witness folder",
+   "result": "pass"
+  },
+  {
+   "check": "copy B passes the check again",
+   "result": "pass"
+  },
+  {
+   "check": "copy A, behind in its turn, is told so",
+   "result": "pass"
+  },
+  {
+   "check": "copy A comes back in line with nothing lost",
+   "result": "pass"
+  },
+  {
+   "check": "the check sees the deletion and the edit",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out restores both and commits",
+   "result": "pass"
+  },
+  {
+   "check": "the repair is recorded, with the changed line kept",
+   "result": "pass"
+  },
+  {
+   "check": "the second session's newer record survived the repair",
+   "result": "pass"
+  },
+  {
+   "check": "after the repair the check passes",
+   "result": "pass"
+  },
+  {
+   "check": "an uncommitted signature line does not count",
+   "result": "pass"
+  },
+  {
+   "check": "the next close-out voids it and asks the founder",
+   "result": "pass"
+  },
+  {
+   "check": "the founder can send a decision back with a note",
+   "result": "pass"
+  },
+  {
+   "check": "the members see the founder's note on a decision sent back",
+   "result": "pass"
+  },
+  {
+   "check": "a change to who is a member is asked on its own",
+   "result": "pass"
+  },
+  {
+   "check": "and that close-out was committed and witnessed",
+   "result": "pass"
+  },
+  {
+   "check": "the founder can sign with a note",
+   "result": "pass"
+  },
+  {
+   "check": "the check still knows the folder is an organization (birth read from the history)",
+   "result": "pass"
+  },
+  {
+   "check": "it names the lost birth record",
+   "result": "pass"
+  },
+  {
+   "check": "it still checks the witness",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out does not call it the seed, and restores the file before anything else",
+   "result": "pass"
+  },
+  {
+   "check": "the birth record is back, with the earlier events",
+   "result": "pass"
+  },
+  {
+   "check": "the overwritten lines are kept in the repair record",
+   "result": "pass"
+  },
+  {
+   "check": "after the repair the check passes",
+   "result": "pass"
+  },
+  {
+   "check": "an emptied events file and a deleted birth file are both named",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out restores both",
+   "result": "pass"
+  },
+  {
+   "check": "and the check passes again",
+   "result": "pass"
+  },
+  {
+   "check": "files changed with no session_start since the last close-out are flagged",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out puts the gap on record, naming what changed",
+   "result": "pass"
+  },
+  {
+   "check": "an unrecorded session still gets its own number",
+   "result": "pass"
+  },
+  {
+   "check": "with nothing recorded and nothing changed, the founder is asked whether a session took place",
+   "result": "pass"
+  },
+  {
+   "check": "a record written after a close-out belongs to the next session, not the closed one",
+   "result": "pass"
+  },
+  {
+   "check": "the roll-call counts close-outs: the drill role is reported after three sessions without a drill",
+   "result": "pass"
+  },
+  {
+   "check": "a scripted run that answers y to every prompt cannot sign past the failures: it stops before the first signature question, with nothing signed or committed",
+   "result": "pass"
+  },
+  {
+   "check": "every failing item is listed, numbered, before that question",
+   "result": "pass"
+  },
+  {
+   "check": "every failure is listed before the first signature question, and its number must be typed to go on",
+   "result": "pass"
+  },
+  {
+   "check": "the failure is attached to the decision whose effects include the failing role",
+   "result": "pass"
+  },
+  {
+   "check": "the signature records that the founder was shown every failure and acknowledged them",
+   "result": "pass"
+  },
+  {
+   "check": "the role the founder did not sign was put back out at the close-out, and the record keeps what it was",
+   "result": "pass"
+  },
+  {
+   "check": "so the check passes after that close-out",
+   "result": "pass"
+  },
+  {
+   "check": "structure switched on with no decision is put back before the commit",
+   "result": "pass"
+  },
+  {
+   "check": "the commit holds the records and the work, not the seed's documentation or the stray file",
+   "result": "pass"
+  },
+  {
+   "check": "what was left out stays in the folder, uncommitted",
+   "result": "pass"
+  },
+  {
+   "check": "the commit message says what was left out",
+   "result": "pass"
+  },
+  {
+   "check": "at the next close-out the seed's file is put back, and the changed version is kept in the witness folder",
+   "result": "pass"
+  },
+  {
+   "check": "a STATE.md that drops a decision still waiting for signature is flagged",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out's commit lists that decision from the records anyway",
+   "result": "pass"
+  },
+  {
+   "check": "a checker role with an instance on another producer's model is adopted and signed",
+   "result": "pass"
+  },
+  {
+   "check": "a launch runs only from the founder's terminal",
+   "result": "pass"
+  },
+  {
+   "check": "the launch is recorded in the records, and with its secret only in the witness folder",
+   "result": "pass"
+  },
+  {
+   "check": "a launched member's record names the launched instance, the founder's statement of its model, and a fingerprint",
+   "result": "pass"
+  },
+  {
+   "check": "a launched member cannot write as another instance",
+   "result": "pass"
+  },
+  {
+   "check": "the check verifies the fingerprint against the witness's copy",
+   "result": "pass"
+  },
+  {
+   "check": "and says the launch differs from the instance's model slot",
+   "result": "pass"
+  },
+  {
+   "check": "records with no launch are reported as unverified",
+   "result": "pass"
+  },
+  {
+   "check": "a line that claims the launch without its secret fails the check",
+   "result": "pass"
+  },
+  {
+   "check": "once a correction points to it, it is a corrected defect",
+   "result": "pass"
+  },
+  {
+   "check": "an agent app cannot write a record in the founder's name",
+   "result": "pass"
+  },
+  {
+   "check": "a claim records the SHA-256 of its saved source",
+   "result": "pass"
+  },
+  {
+   "check": "a quotation that occurs in its source passes",
+   "result": "pass"
+  },
+  {
+   "check": "typographic dashes and an ellipsis do not hide a true quotation",
+   "result": "pass"
+  },
+  {
+   "check": "a quotation that is not in its source fails the check (CK-1)",
+   "result": "pass"
+  },
+  {
+   "check": "fos_claims shows the same, claim by claim",
+   "result": "pass"
+  },
+  {
+   "check": "a corrected claim stays on record as a corrected defect",
+   "result": "pass"
+  },
+  {
+   "check": "a saved source that changed after the claim is reported",
+   "result": "pass"
+  },
+  {
+   "check": "a passage in org/ quoting the founder's own words passes",
+   "result": "pass"
+  },
+  {
+   "check": "the planted misquotation in org/ is caught by CK-1",
+   "result": "pass"
+  },
+  {
+   "check": "so CK-1 is a tested check: a drill was revealed as caught by it",
+   "result": "pass"
+  },
+  {
+   "check": "a checker that has not yet caught a drill is reported as untested",
+   "result": "pass"
+  },
+  {
+   "check": "once it catches one, it is no longer reported as untested",
+   "result": "pass"
+  },
+  {
+   "check": "an exact quotation of the seed's interview question passes, and close quotations of it are not called the founder's misquotes",
+   "result": "pass"
+  },
+  {
+   "check": "a close quotation of the seed is a warning that names the seed's file and words",
+   "result": "pass"
+  },
+  {
+   "check": "a misquotation of the founder still fails, in the check and in fos_claims",
+   "result": "pass"
+  },
+  {
+   "check": "with the files as they were, the check passes again",
+   "result": "pass"
+  },
+  {
+   "check": "a member logs a fetch with its address and saved file, and fos_log records the saved file's SHA-256",
+   "result": "pass"
+  },
+  {
+   "check": "a logged fetch whose page is saved and unchanged raises nothing",
+   "result": "pass"
+  },
+  {
+   "check": "the check warns when a fetched page changed after it was saved, or was never saved",
+   "result": "pass"
+  },
+  {
+   "check": "once the pages are saved as fetched, those warnings go",
+   "result": "pass"
+  },
+  {
+   "check": "README and the first session say plainly how sources enter: saved by the founder, or fetched with the founder's leave and logged; and that what a member remembers is never a source",
+   "result": "pass"
+  },
+  {
+   "check": "the view is drawn even when a record fits no schema",
+   "result": "pass"
+  },
+  {
+   "check": "files checked out with CRLF line endings are not reported out of date",
+   "result": "pass"
+  },
+  {
+   "check": "a charter item with no adopted_by is reported, naming the founding decision",
+   "result": "pass"
+  },
+  {
+   "check": "a charter item adopted by no signed decision fails",
+   "result": "pass"
+  },
+  {
+   "check": "a founded organization whose goal does not name its decision is told so",
+   "result": "pass"
+  },
+  {
+   "check": "with the decision named in both places, those notices go",
+   "result": "pass"
+  },
+  {
+   "check": "fos_crate writes a crate outside the folder",
+   "result": "pass"
+  },
+  {
+   "check": "the same revision gives the same bytes",
+   "result": "pass"
+  },
+  {
+   "check": "it declares RO-Crate 1.3 and the Process Run Crate 0.6 profile",
+   "result": "pass"
+  },
+  {
+   "check": "every CreateAction has an identifier and an instrument, and the root mentions it",
+   "result": "pass"
+  },
+  {
+   "check": "every records file is in the crate with its SHA-256",
+   "result": "pass"
+  },
+  {
+   "check": "the PROV file holds every record line as an entity, attributed to its writer",
+   "result": "pass"
+  },
+  {
+   "check": "no transcript, no sealed drill text and nothing uncommitted is in the crate",
+   "result": "pass"
+  },
+  {
+   "check": "with --with-pushlog, the witness's push log travels with it",
+   "result": "pass"
+  },
+  {
+   "check": "--from-witness gives a verdict from witnessed history only, whatever this folder holds",
+   "result": "pass"
+  },
+  {
+   "check": "an open pin is raised by the check, in the founder's words",
+   "result": "pass"
+  },
+  {
+   "check": "and by the roll-call",
+   "result": "pass"
+  },
+  {
+   "check": "once revisited, it is no longer raised",
+   "result": "pass"
+  },
+  {
+   "check": "a claim about a member's behaviour without its run count is flagged (CLM-9)",
+   "result": "pass"
+  },
+  {
+   "check": "a member's work that names its own producer is flagged (MBR-9)",
+   "result": "pass"
+  },
+  {
+   "check": "a deviation is recorded with its kind",
+   "result": "pass"
+  },
+  {
+   "check": "a success is recorded beside declines and corrections",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out shows the founder the background, the default and the cost of waiting",
+   "result": "pass"
+  },
+  {
+   "check": "a decision with no warning, changing no one's rights, is in the routine group the founder may sign together",
+   "result": "pass"
+  },
+  {
+   "check": "structure switched on with no decision is PROPOSAL-ONLY",
+   "result": "pass"
+  },
+  {
+   "check": "an unregistered tool folder is flagged",
+   "result": "pass"
+  },
+  {
+   "check": "a tool falsely claiming to be a seed tool fails",
+   "result": "pass"
+  },
+  {
+   "check": "an approved tool whose code still matches its code_sha256 is accepted",
+   "result": "pass"
+  },
+  {
+   "check": "a tool whose code changed after approval is no longer approved",
+   "result": "pass"
+  },
+  {
+   "check": "planting refuses to run without a terminal",
+   "result": "pass"
+  },
+  {
+   "check": "the founder plants a sealed drill",
+   "result": "pass"
+  },
+  {
+   "check": "the records hold only the seal",
+   "result": "pass"
+  },
+  {
+   "check": "the description is outside the folder",
+   "result": "pass"
+  },
+  {
+   "check": "revealed, and its seal verifies",
+   "result": "pass"
+  },
+  {
+   "check": "a drill nobody caught is revealed as missed, and the miss is on record",
+   "result": "pass"
+  },
+  {
+   "check": "a missed drill passes the seal check",
+   "result": "pass"
+  },
+  {
+   "check": "a description changed after planting is caught",
+   "result": "pass"
+  },
+  {
+   "check": "no scripts in the view",
+   "result": "pass"
+  },
+  {
+   "check": "text is escaped",
+   "result": "pass"
+  },
+  {
+   "check": "a content-security policy forbids loading anything",
+   "result": "pass"
+  },
+  {
+   "check": "the same files draw the same view",
+   "result": "pass"
+  },
+  {
+   "check": "the frame shows the birth hash",
+   "result": "pass"
+  },
+  {
+   "check": "fos_export writes a bundle and its relocation note",
+   "result": "pass"
+  },
+  {
+   "check": "the bundle verifies",
+   "result": "pass"
+  },
+  {
+   "check": "it clones into a new folder",
+   "result": "pass"
+  },
+  {
+   "check": "the moved organization keeps its birth hash and records",
+   "result": "pass"
+  },
+  {
+   "check": "and says it has no witness yet",
+   "result": "pass"
+  },
+  {
+   "check": "its view shows it as unwitnessed",
+   "result": "pass"
+  },
+  {
+   "check": "release_export makes a release, and its scan finds nothing to block",
+   "result": "pass"
+  },
+  {
+   "check": "ignored files stay behind",
+   "result": "pass"
+  },
+  {
+   "check": "exactly one commit, with no parent, by the neutral identity, at the fixed date in UTC",
+   "result": "pass"
+  },
+  {
+   "check": "its tree is the seed's last tree, byte for byte",
+   "result": "pass"
+  },
+  {
+   "check": "no remote, no other branch or tag; the manifest gives every file's hash",
+   "result": "pass"
+  },
+  {
+   "check": "--scan of the release: nothing to block, one commit",
+   "result": "pass"
+  },
+  {
+   "check": "an earlier release is not replaced without --replace",
+   "result": "pass"
+  },
+  {
+   "check": "the same seed commit and date give the same commit id",
+   "result": "pass"
+  },
+  {
+   "check": "a release needs a fixed date, in UTC",
+   "result": "pass"
+  },
+  {
+   "check": "a release is never written inside the seed",
+   "result": "pass"
+  },
+  {
+   "check": "--replace deletes only a folder this script made",
+   "result": "pass"
+  },
+  {
+   "check": "the term list must be kept outside the seed",
+   "result": "pass"
+  },
+  {
+   "check": "uncommitted changes are refused: a release is made from the last commit only",
+   "result": "pass"
+  },
+  {
+   "check": "an organization born from the seed is refused: its history is its record",
+   "result": "pass"
+  },
+  {
+   "check": "planted strings are each caught: e-mail, user path, time zone, IP address, key-like, machine name, ORCID iD, term list (test)",
+   "result": "pass"
+  },
+  {
+   "check": "and nothing is committed when one is found",
+   "result": "pass"
+  },
+  {
+   "check": "birth without git, with a computed birth hash",
+   "result": "pass"
+  },
+  {
+   "check": "the computed hash equals git's tree id",
+   "result": "pass"
+  },
+  {
+   "check": "the check runs without git",
+   "result": "pass"
+  },
+  {
+   "check": "the close-out keeps a dated copy in the witness folder",
+   "result": "pass"
+  },
+  {
+   "check": "a deleted file is caught against the copy",
+   "result": "pass"
+  },
+  {
+   "check": "and restored from it",
+   "result": "pass"
+  },
+  {
+   "check": "without git, a lost birth record is read from the witness's dated copy",
+   "result": "pass"
+  },
+  {
+   "check": "and the close-out restores it from that copy",
+   "result": "pass"
+  },
+  {
+   "check": "--list names every occurrence",
+   "result": "pass"
+  },
+  {
+   "check": "the old name is gone from every file",
+   "result": "pass"
+  },
+  {
+   "check": "the scripts were renamed",
+   "result": "pass"
+  },
+  {
+   "check": "the renamed check still runs",
+   "result": "pass"
+  }
+ ],
+ "passed": 317,
+ "failed": 0
+}

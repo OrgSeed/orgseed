@@ -1,0 +1,723 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "seed/ledgers.schema.json",
+  "title": "Ledgers (records files other than events, proposals and decisions; one JSON object per line)",
+  "description": "Each ledger file holds one kind of record. All are append-only. A change of status is a new line that refers to the earlier one. Which file uses which definition is given in x-files. Every definition adds its fields to the common record fields (common.schema.json).",
+  "x-files": {
+    "records/signatures.jsonl": "signature",
+    "records/declines.jsonl": "decline",
+    "records/corrections.jsonl": "correction",
+    "records/claims.jsonl": "claim",
+    "records/commitments.jsonl": "commitment",
+    "records/recall.jsonl": "recall",
+    "records/dissent.jsonl": "dissent",
+    "records/reviews.jsonl": "review",
+    "records/needs.jsonl": "need",
+    "records/drills.jsonl": "drill",
+    "records/pins.jsonl": "pin",
+    "records/deviations.jsonl": "deviation",
+    "records/successes.jsonl": "success"
+  },
+  "$defs": {
+    "signature": {
+      "description": "Core. The founder's signature on a decision, or refusal to sign it, given at close-out. Written only by scripts/fos_close.py (captured_by close_script), never by a member.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "decision_id",
+            "decision_seq",
+            "decision_sha256",
+            "answer",
+            "mode",
+            "signer"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "SG-0001 ..."
+            },
+            "decision_id": {
+              "type": "string"
+            },
+            "decision_seq": {
+              "type": "integer"
+            },
+            "decision_sha256": {
+              "type": "string",
+              "description": "SHA-256 of the decision's line exactly as written. If the line ever changed, the signature no longer matches it."
+            },
+            "answer": {
+              "type": "string",
+              "enum": [
+                "signed",
+                "refused",
+                "sent_back"
+              ],
+              "description": "signed: final. refused: not signed; the decision stays a proposal. sent_back: returned to the members with the founder's note, to be reworked and asked again as a new decision."
+            },
+            "mode": {
+              "type": "string",
+              "enum": [
+                "terminal",
+                "test"
+              ],
+              "description": "terminal: answered by a person at a terminal. test: the seed's self-test; never counts in a real organization."
+            },
+            "signer": {
+              "type": "string",
+              "description": "The founder's role instance ID."
+            },
+            "note": {
+              "type": "string",
+              "description": "The founder's note, given with a signature or when sending a decision back."
+            },
+            "shown": {
+              "type": "object",
+              "description": "What the founder was shown before answering: the decision's effects (what signing makes part of the organization), its warnings, the check result, the files changed since the last close-out, and whether it was asked on its own or in the routine group."
+            },
+            "founding": {
+              "type": "string",
+              "enum": ["FOUND"],
+              "description": "Present on the founding only: the word the founder typed at the close-out's prompt, Found the organization now on this charter? (type FOUND). It alone founds the organization. The close-out commits this signature on its own ([FOUND]) before any structure, and the check and the witness read the founding from that commit."
+            },
+            "shown_sha256": {
+              "type": "string",
+              "description": "SHA-256 of the exact text the founder was shown for this decision, so the signature traces to what was reviewed."
+            }
+          }
+        }
+      ]
+    },
+    "decline": {
+      "description": "Core. Something stopped or turned back (by a rule, a check, the founder or a member): the visible trace of structure acting on the work.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "by",
+            "rule_id",
+            "what",
+            "why_declined",
+            "outcome"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "X-0001 ..."
+            },
+            "by": {
+              "type": "string",
+              "description": "Who applied the rule (role instance or founder)."
+            },
+            "rule_id": {
+              "type": "string",
+              "description": "The rule or check that declined it, e.g. CORE-13 or a check ID."
+            },
+            "what": {
+              "type": "string",
+              "description": "What was proposed or drafted, briefly."
+            },
+            "why_declined": {
+              "type": "string"
+            },
+            "outcome": {
+              "type": "string",
+              "enum": [
+                "dropped",
+                "redirected",
+                "kept_after_fix",
+                "overruled"
+              ]
+            },
+            "redirected_to": {
+              "type": "string"
+            },
+            "overruled_by": {
+              "type": "string",
+              "description": "If overruled: the decision ID."
+            },
+            "enforced_by": {
+              "type": "string",
+              "description": "Optional. When an enforcement add-on in the agent app refused the write: its tool ID in org/TOOLS.json (docs/ENFORCEMENT.md)."
+            }
+          }
+        }
+      ]
+    },
+    "correction": {
+      "description": "memory module. Something in the organization's work or conduct that was wrong, and the structural fix. (A wrongly written record is corrected by a record_correction event instead.)",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "what_was_wrong",
+            "what_is_right",
+            "caught_by",
+            "structural_fix"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "C-0001 ..."
+            },
+            "what_was_wrong": {
+              "type": "string"
+            },
+            "what_is_right": {
+              "type": "string"
+            },
+            "caught_by": {
+              "type": "string",
+              "description": "Who caught it: founder, a role instance, a check ID, or an outside reader."
+            },
+            "escaped": {
+              "type": "boolean",
+              "description": "True if it had already left the folder before it was caught."
+            },
+            "failure_class": {
+              "type": "string",
+              "description": "A class from modules/design-ahead/MODULE.md, or other."
+            },
+            "structural_fix": {
+              "type": "string",
+              "description": "The change to structure that should prevent a repeat, as a proposal ID, or none yet."
+            }
+          }
+        }
+      ]
+    },
+    "claim": {
+      "description": "Core (CORE-13), fuller with the claim-discipline module. A claim matched to its source at the moment the source is used, or marked lead.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "claim",
+            "status"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "CL-0001 ..."
+            },
+            "claim": {
+              "type": "string",
+              "description": "The sentence as we use it."
+            },
+            "cites": {
+              "type": "string",
+              "description": "The citation as it appears in the work: a URL, DOI, arXiv ID, ISBN, or author and year."
+            },
+            "source_file": {
+              "type": "string",
+              "description": "Path under sources/. Empty only if status is lead or unable."
+            },
+            "source_sha256": {
+              "type": "string",
+              "description": "SHA-256 of the saved source when the claim was recorded; fos_log fills it. If the file is later replaced, the check says so."
+            },
+            "quote": {
+              "type": "string",
+              "description": "Exact supporting words from the source."
+            },
+            "location": {
+              "type": "string",
+              "description": "Page, section or line."
+            },
+            "finding_or_ours": {
+              "type": "string",
+              "enum": [
+                "finding",
+                "ours"
+              ],
+              "description": "finding: the source says it. ours: our inference from it."
+            },
+            "scope": {
+              "type": "string",
+              "description": "The limits the source places on it: population, measure, conditions."
+            },
+            "status": {
+              "type": "string",
+              "enum": [
+                "verified",
+                "lead",
+                "unable"
+              ]
+            },
+            "about_member": {
+              "type": "boolean",
+              "description": "True when the claim is about how a member or a model behaves."
+            },
+            "runs": {
+              "type": "integer",
+              "description": "For a claim about a member's behaviour: how many runs or observations it rests on."
+            },
+            "evidence": {
+              "type": "string",
+              "enum": [
+                "one observation",
+                "repeated pattern",
+                "robust across runs",
+                "confirmed by a planned test"
+              ],
+              "description": "For a claim about a member's behaviour: how far the runs behind it reach."
+            }
+          }
+        }
+      ]
+    },
+    "commitment": {
+      "description": "memory module. A promise of future work, with its owner and what starts it.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "owner",
+            "what",
+            "state"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "K-0001 ... A later line with the same id records a new state."
+            },
+            "owner": {
+              "type": "string"
+            },
+            "what": {
+              "type": "string"
+            },
+            "trigger": {
+              "type": "string",
+              "description": "What starts it: a date, an event, a decision."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "open",
+                "done",
+                "dropped"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "recall": {
+      "description": "memory module. A cold-recall check at the start of a session (onboarding/SECOND_SESSION.md).",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "instance",
+            "files_read",
+            "unprompted",
+            "items"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "RC-0001 ..."
+            },
+            "instance": {
+              "type": "string"
+            },
+            "files_read": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "unprompted": {
+              "type": "boolean"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "required": [
+                  "item",
+                  "mark"
+                ],
+                "properties": {
+                  "item": {
+                    "type": "string"
+                  },
+                  "mark": {
+                    "type": "string",
+                    "enum": [
+                      "correct",
+                      "wrong",
+                      "missing"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "dissent": {
+      "description": "norms module. A member says a rule seems wrong for a case.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "by",
+            "rule_id",
+            "case",
+            "view"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "DS-0001 ..."
+            },
+            "by": {
+              "type": "string"
+            },
+            "rule_id": {
+              "type": "string"
+            },
+            "case": {
+              "type": "string"
+            },
+            "view": {
+              "type": "string"
+            },
+            "response": {
+              "type": "string",
+              "description": "What happened: a decision ID, or noted."
+            }
+          }
+        }
+      ]
+    },
+    "review": {
+      "description": "review module. One run of a check held by a role.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "check_id",
+            "maker",
+            "checker",
+            "object",
+            "result"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "RV-0001 ..."
+            },
+            "check_id": {
+              "type": "string"
+            },
+            "maker": {
+              "type": "string"
+            },
+            "checker": {
+              "type": "string"
+            },
+            "object": {
+              "type": "string",
+              "description": "What was checked: a file path or work item."
+            },
+            "result": {
+              "type": "string",
+              "enum": [
+                "pass",
+                "findings",
+                "fail"
+              ]
+            },
+            "findings": {
+              "type": "string"
+            },
+            "unique_catch": {
+              "type": "boolean",
+              "description": "True when this review found something no other check or reader found; kept so that checks are kept or retired on what only they catch."
+            }
+          }
+        }
+      ]
+    },
+    "need": {
+      "description": "tool-making module. A need noticed. A need closed by hand or by a tool the organization already has counts as progress.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "task",
+            "noticed_by",
+            "state"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "N-0001 ... A later line with the same id records a new state."
+            },
+            "task": {
+              "type": "string"
+            },
+            "recurs": {
+              "type": "string",
+              "description": "How often the task comes up."
+            },
+            "cost_now": {
+              "type": "string",
+              "description": "What doing it now costs, in time or effort."
+            },
+            "noticed_by": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "open",
+                "by_hand",
+                "existing_tool",
+                "make",
+                "buy",
+                "dropped"
+              ]
+            },
+            "tool_id": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "drill": {
+      "description": "Core. A drill the founder plants to test whether a check or a member catches a known fault. Written only by scripts/fos_drill.py (captured_by drill_script). At planting, only a fingerprint (seal) of the founder's description is recorded; the description itself stays outside the folder until the founder reveals it.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "action"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "DR-0001 ... The reveal is a later line with the same id."
+            },
+            "action": {
+              "type": "string",
+              "enum": [
+                "planted",
+                "revealed",
+                "cancelled"
+              ]
+            },
+            "seal": {
+              "type": "string",
+              "description": "planted: SHA-256 of salt + description, in hex."
+            },
+            "announced": {
+              "type": "boolean",
+              "description": "planted: whether members were told that a drill is under way."
+            },
+            "hint": {
+              "type": "string",
+              "description": "planted, optional: what members were told (for example, a folder)."
+            },
+            "description": {
+              "type": "string",
+              "description": "revealed: the founder's description of the planted fault."
+            },
+            "salt": {
+              "type": "string",
+              "description": "revealed: the salt used in the seal."
+            },
+            "outcome": {
+              "type": "string",
+              "enum": [
+                "caught",
+                "missed",
+                "not_run"
+              ],
+              "description": "revealed: whether the fault was caught."
+            },
+            "caught_by": {
+              "type": "string",
+              "description": "revealed and caught: the role instance or check (for example CK-1) that caught it. Left out when the drill was missed: a miss is recorded as outcome missed, with no catcher."
+            }
+          }
+        }
+      ]
+    },
+    "pin": {
+      "description": "memory module. Something the founder chose to come back to later, in the founder's own words, with what should bring it back. Read at every roll-call; a later line with the same id records a new state.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "words",
+            "trigger",
+            "state"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "PN-0001 ..."
+            },
+            "words": {
+              "type": "string",
+              "description": "What the founder said, word for word."
+            },
+            "trigger": {
+              "type": "string",
+              "description": "What should bring it back: a date, an event, a session count, a decision."
+            },
+            "state": {
+              "type": "string",
+              "enum": [
+                "open",
+                "revisited",
+                "dropped"
+              ]
+            },
+            "outcome": {
+              "type": "string",
+              "description": "When revisited or dropped: what happened, or the decision ID."
+            }
+          }
+        }
+      ]
+    },
+    "deviation": {
+      "description": "design-ahead module, and every study. A change made after the design was frozen (a study's plan, or a design the founder declared fixed), with its kind, so that later readers can tell a forced change from a chosen one.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "what_changed",
+            "class",
+            "outcome_seen"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "DV-0001 ..."
+            },
+            "what_changed": {
+              "type": "string"
+            },
+            "class": {
+              "type": "string",
+              "enum": [
+                "forced",
+                "correction",
+                "discretionary"
+              ],
+              "description": "forced: imposed from outside (for example, a producer retired or changed a model); correction: an error in the design or its use was fixed; discretionary: chosen."
+            },
+            "forced_by": {
+              "type": "string",
+              "description": "For a forced change: what forced it."
+            },
+            "outcome_seen": {
+              "type": "boolean",
+              "description": "Whether any results the change could bear on had been seen before it was made."
+            },
+            "expected_effect": {
+              "type": "string",
+              "description": "What the change may do to the results, and in which direction, as far as anyone can say."
+            }
+          }
+        }
+      ]
+    },
+    "success": {
+      "description": "norms module. Something that went well, kept as an example to learn from, beside what was turned back and what was corrected.",
+      "allOf": [
+        {
+          "$ref": "common.schema.json#/$defs/record"
+        },
+        {
+          "type": "object",
+          "required": [
+            "id",
+            "what_went_well",
+            "evidence"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "SU-0001 ..."
+            },
+            "what_went_well": {
+              "type": "string"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Where it shows in the record: record IDs, files, commits."
+            },
+            "by": {
+              "type": "string",
+              "description": "Who did it (role instance or founder)."
+            },
+            "lesson": {
+              "type": "string",
+              "description": "What to keep doing, in one sentence."
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "organization",
+  "image": "python:3.12-bookworm",
+  "containerEnv": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "SEED_IN_CONTAINER": "1"
+  },
+  "runArgs": ["--security-opt=no-new-privileges"],
+  "postCreateCommand": "git --version >/dev/null 2>&1 || (apt-get update && apt-get install -y --no-install-recommends git); git config --global --add safe.directory \"${containerWorkspaceFolder}\"; python scripts/fos_check.py || true",
+  "customizations": {}
+}

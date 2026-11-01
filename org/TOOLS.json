@@ -1,0 +1,150 @@
+{
+  "about": "The tool registry: the only route to using a tool (modules/tool-making/MODULE.md). A tool counts as part of the organization only when its row's adopted_by points to a decision the founder signed; seed tools say adopted_by seed. Rows are never deleted: a retired tool keeps its row with status retired. Never put a key or password here; say only where it is kept.",
+  "rules_version": "1",
+  "tools": [
+    {
+      "id": "fos_check",
+      "path": "scripts/fos_check.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Checks the records, their whole history, the witness, signatures and the governance of every structural item.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_claims",
+      "path": "scripts/fos_claims.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "CK-1 claim by claim: each verified claim's quotation against its saved source, and each passage quoted in org/ against the founder's words and the saved sources. Changes nothing.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_close",
+      "path": "scripts/fos_close.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "The founder's close-out, run in a terminal: checks, asks the founder to sign each decision, commits, and pushes to the witness.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_crate",
+      "path": "scripts/fos_crate.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Exports the witnessed history at a revision as an RO-Crate 1.3 (Process Run Crate 0.6 profile) with a W3C PROV file inside, outside the folder; the same revision gives the same bytes.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_drill",
+      "path": "scripts/fos_drill.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Drills: the founder plants a sealed fault and later reveals it, to test whether checks still catch what they should.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_export",
+      "path": "scripts/fos_export.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Exports the organization as a git bundle with its whole history, plus a relocation note, outside the folder.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_init",
+      "path": "scripts/fos_init.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Creates a new organization from the seed with no AI and no network, records its birth hash, and creates its witness.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_launch",
+      "path": "scripts/fos_launch.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Records the founder's launch of an agent app as a role instance, with what it runs on, so that the records it writes can be attributed to it and checked.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_lib",
+      "path": "scripts/fos_lib.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Shared helpers for the seed's scripts, including the one function that appends records.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_log",
+      "path": "scripts/fos_log.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Appends one checked record to a records file; the sanctioned way to write records.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_render",
+      "path": "scripts/fos_render.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Draws view/org_view.html from the organization's files and view/VIEWS.json. No scripts, no network.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_roles",
+      "path": "scripts/fos_roles.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Role roll-call: each role's trigger, when it last ran, and whether it is due or stale.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_rules",
+      "path": "scripts/fos_rules.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Compiles the rules of the core and of every adopted module into org/RULES_IN_FORCE.md.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_selftest",
+      "path": "scripts/fos_selftest.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Runs the seed's integrity claims on throwaway copies in a temporary folder and reports what held.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_sync",
+      "path": "scripts/fos_sync.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Brings the folder back in line with its witness after another copy closed out or a push was refused, keeping this folder's own work or setting it aside in the witness folder; the founder runs it.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "fos_witness",
+      "path": "scripts/fos_witness.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Creates and verifies the witness, the copy of the history kept outside the members' reach; its copy inside the witness checks every push.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "rename",
+      "path": "scripts/rename.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Lists every place the seed's name appears, or changes it everywhere at once.",
+      "adopted_by": "seed"
+    },
+    {
+      "id": "release_export",
+      "path": "scripts/release_export.py",
+      "tier": "seed",
+      "status": "active",
+      "purpose": "Releases the seed itself for publication: the files of its last commit in a new repository with one commit by a neutral identity at a fixed date, after a scan for identifying strings. Refuses to run in an organization.",
+      "adopted_by": "seed"
+    }
+  ]
+}

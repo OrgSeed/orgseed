@@ -1,0 +1,94 @@
+{
+  "format_version": "1",
+  "about": "The organization's structure in one file. Change it only through CORE-2: write a proposal, ask the founder with the proposal's ID, record the reply, then edit, and put the decision's ID in adopted_by. An item counts as part of the organization only when that decision is signed by the founder at close-out; until then it shows as awaiting signature, and items with no such decision show as proposals.",
+  "organization": {
+    "name": "",
+    "founded": false,
+    "founded_on": null,
+    "founding_decision": null
+  },
+  "modules": [
+    {"id": "charter", "state": "off", "adopted_by": null},
+    {"id": "decision-rights", "state": "off", "adopted_by": null},
+    {"id": "claim-discipline", "state": "off", "adopted_by": null},
+    {"id": "memory", "state": "off", "adopted_by": null},
+    {"id": "record-keeping", "state": "off", "adopted_by": null},
+    {"id": "review", "state": "off", "adopted_by": null},
+    {"id": "tool-making", "state": "off", "adopted_by": null},
+    {"id": "membership", "state": "off", "adopted_by": null},
+    {"id": "norms", "state": "off", "adopted_by": null},
+    {"id": "engagement", "state": "off", "adopted_by": null},
+    {"id": "boundaries", "state": "off", "adopted_by": null},
+    {"id": "design-ahead", "state": "off", "adopted_by": null}
+  ],
+  "presets": {
+    "about": "Presets are named shortcuts the founder may start from. They are not levels: any combination of modules is valid, and the founder may change any module at any time through CORE-2. The record-keeping core (AGENTS.md, CORE-4 and CORE-5) is the same under every preset.",
+    "starter": ["charter", "decision-rights", "memory", "record-keeping", "engagement", "boundaries"],
+    "claims": ["charter", "claim-discipline", "review", "memory", "record-keeping"],
+    "full": ["charter", "decision-rights", "claim-discipline", "memory", "record-keeping", "review", "tool-making", "membership", "norms", "engagement", "boundaries", "design-ahead"],
+    "bare": []
+  },
+  "roles": [
+    {
+      "id": "founder",
+      "title": "Founder",
+      "kind": "human",
+      "purpose": "Sets the goal, holds the decision rights the organization reserves to people, signs decisions at close-out, and signs the organization's work.",
+      "trigger": {"on": "founder_call", "when": "whenever the founder opens a session or is handed a decision"},
+      "output": "decisions in records/decisions.jsonl; signatures at close-out; signed work in work/",
+      "expected_every_sessions": null,
+      "card": null,
+      "instances": [{"id": "founder", "holder": "the founder", "adopted_by": "core"}],
+      "adopted_by": "core"
+    },
+    {
+      "id": "member",
+      "title": "Member",
+      "kind": "ai",
+      "purpose": "Works with the founder toward the goal; proposes structure; follows the rules in force.",
+      "trigger": {"on": "session_start", "when": "every session"},
+      "output": "work/ and records/",
+      "expected_every_sessions": 1,
+      "card": null,
+      "instances": [
+        {
+          "id": "member-1",
+          "slot": {"producer": null, "model_id": null, "model_id_source": null, "agent_app": null, "host": null},
+          "adopted_by": "core"
+        }
+      ],
+      "adopted_by": "core"
+    },
+    {
+      "id": "drill",
+      "title": "Drill",
+      "kind": "human",
+      "purpose": "Tests the organization's checks with a fault the founder plants, so that a check that has quietly stopped working is noticed.",
+      "trigger": {"on": "every_n_sessions", "when": "every 3 sessions: the founder plants a sealed drill with python scripts/fos_drill.py plant, and reveals it once the work has been checked"},
+      "output": "records/drills.jsonl",
+      "expected_every_sessions": 3,
+      "card": null,
+      "instances": [{"id": "drill-1", "holder": "the founder", "adopted_by": "core"}],
+      "adopted_by": "core"
+    }
+  ],
+  "retired_roles": [],
+  "decision_rights": {
+    "about": "Who may decide what. The core reserves all structural decisions to the founder, and only the founder signs decisions at close-out. The decision-rights module lets the founder delegate some decisions, with limits; delegated decisions are signed by the founder like any other.",
+    "reserved_to_founder": [
+      "adopt, change or remove any structure: modules, roles, role instances, models in slots, rules, checks, tools, the view",
+      "change these decision rights",
+      "sign decisions at close-out (python scripts/fos_close.py)",
+      "send, publish or share anything outside the folder",
+      "sign the organization's work"
+    ],
+    "delegated": []
+  },
+  "settings": {
+    "rule_reasons": "shown",
+    "rule_reasons_about": "shown = rules are read with their reasons (the default). hidden = rules are compiled without reasons. Hidden exists only for studies that compare the two; change it only through CORE-2.",
+    "default_expected_every_sessions": 5,
+    "default_expected_about": "Used for any role that does not state expected_every_sessions. A role not run within its expected interval is listed in the role roll-call at session start."
+  },
+  "checks": []
+}
