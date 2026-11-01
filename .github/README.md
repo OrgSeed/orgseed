@@ -6,7 +6,7 @@ The seed itself is nothing to install: no server, no account. It sends nothing a
 
 ## This repository
 
-This is the version of the seed the pilot ran: OrgSeed v1.3.2, the seed commit `44a3809` that the pilot's frozen plan names. It is identical to that tagged commit apart from its licence text (`LICENSE`, `LICENSE-docs`, `NOTICE`, the Licence section of the root `README.md` and one licence line in `docs/DESIGN_NOTES.md`) and this page. It is free for research and other noncommercial use. Editors or scholars who want a later version can ask through the journal's editorial office.
+This is the version of the seed our pilot ran: OrgSeed v1.3.2, a draft. It is the commit `44a3809` that the pilot's frozen plan names, apart from its licence text (`LICENSE`, `LICENSE-docs`, `NOTICE`, the Licence section of the root `README.md` and one licence line in `docs/DESIGN_NOTES.md`) and this page. That commit is not public, so the match rests on our statement. In the pilot the founder was a script. AI agents wrote the seed's code and documents at the author's direction, and the author has not yet verified the code line by line. The files stay as the pilot ran them, so where one speaks more strongly than this page, this page and `docs/SECURITY.md` govern. It is free for research and other noncommercial use. A later version exists, which no pilot has run; editors reviewing this work can ask for it through the journal.
 
 The pilot's plan, code and scoring data are in [`OrgSeed/orgseed-pilot`](https://github.com/OrgSeed/orgseed-pilot). That repository does not hold the seed.
 
@@ -29,14 +29,14 @@ The pilot's plan, code and scoring data are in [`OrgSeed/orgseed-pilot`](https:/
 Founding is not one click. It is the first session, a long conversation in which you set the goal and the structure, and it ends with one word typed by you. The steps before it only make folders.
 
 1. **Download this repository** (green "Code" button, then "Download ZIP") and unzip it. This folder is the seed; leave it as it is.
-2. **Double-click `Found-an-organization`** (`.cmd` on Windows, `.command` on a Mac) in the seed's folder. A small window asks for a short name; type one and press Enter. Despite the launcher's name, nothing is founded yet. It copies the seed into two folders next to it:
+2. **Double-click `Found-an-organization`** (`.cmd` on Windows, `.command` on a Mac) in the seed's folder. A small window asks for a short name; type one and press Enter. (If your system blocks it, run `python scripts/fos_init.py ../my-organization` in a terminal in this folder.) Despite the launcher's name, nothing is founded yet. It copies the seed into two folders next to it:
    - your organization, under the name you gave;
    - its **witness**, with `-witness` at the end of the name: a copy of the organization's history that refuses any rewrite or deletion, kept outside the folder the AI members work in. It makes a rewritten record easier to detect. You never need to open it.
 
    No AI is involved in this step.
 3. **Open your organization's folder in your agent app and say: "Read `AGENTS.md` and follow it."** `AGENTS.md` holds the organization's rules, each with its reason. The AI model, working through your app, reads it and joins as the organization's first AI member. (Before you open the app, you may double-click `Start-a-member` in the organization's folder; it writes down which member is starting, on which model, so the records can be traced to it. The seed recommends it; nothing stops without it.)
 4. **The AI member runs the first session with you.** It tells you where your words go, asks about your goal and how you think the work should be organized, proposes a structure, reads a charter back to you, finishes one small piece of work, shows you something a rule turned back, and hands a decision back to you, recording your words as you say them. It can take a long sitting, or more than one: if you stop, the next session picks up where this one left off. This conversation is the founding.
-5. **At the end, double-click `Close-out` in your organization's folder.** A window opens that no AI controls. It checks the records; asks whether you found the organization on the charter the member prepared, which you do by typing FOUND; shows you each decision the member recorded, in your own words, and asks you to sign it or not; then saves the session to the witness. Nothing becomes part of your organization until you sign it, and the organization exists only once you have typed FOUND.
+5. **At the end, double-click `Close-out` in your organization's folder.** A window opens outside your agent app. It checks the records; asks whether you found the organization on the charter the member prepared, which you do by typing FOUND; shows you each decision the member recorded, in your own words, and asks you to sign it or not; then saves the session to the witness. Nothing becomes part of your organization until you sign it, and the organization exists only once you have typed FOUND.
 
 ## Why the two small windows
 
